@@ -54,8 +54,13 @@
 }
 
 /* adaptive */
-@media(max-width:1500px){
-  .footer-section{
+@media (max-width: 1800px) {
+  .footer-content {
+    width: 1370px;
+  }
+}
+@media (max-width: 1040px) {
+  .footer-section {
     background-color: #ffffff;
   }
 }

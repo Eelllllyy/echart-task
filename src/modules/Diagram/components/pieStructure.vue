@@ -3,18 +3,18 @@
     <div class="regional-structure" ref="structureRef"></div>
     <div class="pie-description">
       <h1 class="big-number">{{ store.activePie }} %</h1>
-     <span>п.п.</span>
+      <span>п.п.</span>
     </div>
   </article>
 </template>
 <script setup lang="ts">
-import { computed, ref, onMounted, watch } from "vue";
-import { useApiStore } from "@/store/index";
-import * as echarts from "echarts";
-const structureRef = ref();
-const store = useApiStore();
-let chart: any;
-const colorPalette = ["#951B81", "#EA3742", "#F3AE4D"];
+import { computed, ref, onMounted, watch } from "vue"
+import { useApiStore } from "@/store/index"
+import * as echarts from "echarts"
+const structureRef = ref()
+const store = useApiStore()
+let chart: any
+const colorPalette = ["#951B81", "#EA3742", "#F3AE4D"]
 const chartOptions = computed(() => {
   const option = {
     title: {
@@ -54,42 +54,41 @@ const chartOptions = computed(() => {
         data: store.structure,
       },
     ],
-  };
-  return option;
-});
+  }
+  return option
+})
 watch(chartOptions, () => {
-  chart.setOption(chartOptions.value);
-});
+  chart.setOption(chartOptions.value)
+})
 onMounted(() => {
-  chart = echarts.init(structureRef.value);
-  chart.setOption(chartOptions.value);
-  chart.on('click', function (params :any) {
-    console.log(params);
+  chart = echarts.init(structureRef.value)
+  chart.setOption(chartOptions.value)
+  chart.on("click", function (params: any) {
     store.activePie = params.data.value
-});
-});
+  })
+})
 </script>
 <style scoped>
 .regional-structure {
   width: 980px;
   height: 270px;
 }
-.article-pie{
+.article-pie {
   position: relative;
 }
-.pie-description{
+.pie-description {
   position: absolute;
   top: 10%;
   right: 47%;
-  }
-.big-number{
+}
+.big-number {
   font-size: 30px;
 }
 /* adaptive */
-@media(max-width:1500px){
-  .pie-description{
-  top: 10%;
-  right: 0%;
+@media (max-width: 1500px) {
+  .pie-description {
+    top: 10%;
+    right: 0%;
   }
 }
 </style>

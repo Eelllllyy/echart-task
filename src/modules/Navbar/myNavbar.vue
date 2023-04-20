@@ -3,11 +3,7 @@
     <div class="main-nav-content">
       <h3 class="title-nav">Основные тенденции и факторы</h3>
       <div class="articles-nav">
-        <article
-          class="one-article"
-          v-for="(item, index) in items"
-          :key="index"
-        >
+        <article class="one-article" v-for="(item, index) in items" :key="index">
           <h3>{{ item.title }}</h3>
           <div class="gray-line"></div>
           <ul v-for="li in item.list">
@@ -24,7 +20,7 @@
   </main>
 </template>
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive } from "vue"
 const booty = {
   title: "Добыча",
   list: [
@@ -63,7 +59,7 @@ const booty = {
       url: "#",
     },
   ],
-};
+}
 const techIndicators = {
   title: "Технологические показатели",
   list: [
@@ -84,7 +80,7 @@ const techIndicators = {
       url: "#",
     },
   ],
-};
+}
 const exports = {
   title: "Экспорт",
   list: [
@@ -119,7 +115,7 @@ const exports = {
       url: "#",
     },
   ],
-};
+}
 const development = {
   title: "Развитие",
   list: [
@@ -132,25 +128,20 @@ const development = {
       url: "#",
     },
   ],
-};
-const items = reactive<Array<Item>>([
-  booty,
-  exports,
-  techIndicators,
-  development,
-]);
+}
+const items = reactive<Array<Item>>([booty, exports, techIndicators, development])
 interface Item {
-  title: string;
-  list: Array<Li>;
+  title: string
+  list: Array<Li>
 }
 interface Li {
-  title: string;
-  subTitle?: Array<SybLi>;
-  url: string;
+  title: string
+  subTitle?: Array<SybLi>
+  url: string
 }
 interface SybLi {
-  title: string;
-  url: string;
+  title: string
+  url: string
 }
 </script>
 <style scoped>
@@ -200,11 +191,11 @@ li {
   font-weight: 300;
 }
 /* adaptive */
-@media(max-width:1500px){
-  .articles-nav{
+@media (max-width: 1500px) {
+  .articles-nav {
     flex-direction: column;
   }
-  .main-nav{
+  .main-nav {
     background-color: rgba(255, 255, 255, 0);
   }
 }

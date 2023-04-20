@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import newWells from "@/modules/PetroleumIndustry/newWells.vue";
+import newWells from "@/modules/PetroleumIndustry/newWells.vue"
 </script>
 
 <style>

@@ -3,11 +3,7 @@
     <div class="header-content">
       <div class="header-title">
         <h1>НЕФТЯННАЯ ПРОМЫШЛЕННОСТЬ</h1>
-        <button
-          @click="openNavbar = !openNavbar"
-          :class="[openNavbar ? 'close-navbar' : 'open-navbar']"
-          class="btn"
-        ></button>
+        <button @click="openNavbar = !openNavbar" :class="[openNavbar ? 'close-navbar' : 'open-navbar']" class="btn"></button>
       </div>
       <div class="header-dowload">
         <div class="icon-dowload"></div>
@@ -23,20 +19,8 @@
       <section class="section">
         <h2 class="title-page">ВВОД НОВЫХ СКВАЖИН</h2>
         <div class="btn-common-block">
-          <button
-            class="btn-static"
-            @click="totalPage()"
-            :class="[currentActiveButton ? 'active' : 'inactive']"
-          >
-            Всего
-          </button>
-          <button
-            class="btn-static"
-            @click="fundPage()"
-            :class="[currentActiveButton ? 'inactive' : 'active']"
-          >
-            Фонд эксплуатации скважин
-          </button>
+          <button class="btn-static" @click="totalPage()" :class="[currentActiveButton ? 'active' : 'inactive']">Всего</button>
+          <button class="btn-static" @click="fundPage()" :class="[currentActiveButton ? 'inactive' : 'active']">Фонд эксплуатации скважин</button>
         </div>
         <barWell />
         <div class="description">
@@ -51,35 +35,35 @@
   <myFooter />
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import barWell from "@/modules/Diagram/components/barWell.vue";
-import pieStructure from "@/modules/Diagram/components/pieStructure.vue";
-import myNavbar from "@/modules/Navbar/myNavbar.vue";
-import { useApiStore } from "@/store/index";
-import myFooter from "@/modules/Footer/myFooter.vue";
-const store = useApiStore();
-const openNavbar = ref<boolean>(false);
-const currentActiveButton = ref<boolean>(false);
+import { onMounted, ref } from "vue"
+import barWell from "@/modules/Diagram/components/barWell.vue"
+import pieStructure from "@/modules/Diagram/components/pieStructure.vue"
+import myNavbar from "@/modules/Navbar/myNavbar.vue"
+import { useApiStore } from "@/store/index"
+import myFooter from "@/modules/Footer/myFooter.vue"
+const store = useApiStore()
+const openNavbar = ref<boolean>(false)
+const currentActiveButton = ref<boolean>(false)
 
 const totalPage = () => {
-  store.commissNewWells();
-  store.commissNewWellsDescription();
-  store.regionalStructure();
-  currentActiveButton.value = !currentActiveButton.value;
+  store.commissNewWells()
+  store.commissNewWellsDescription()
+  store.regionalStructure()
+  currentActiveButton.value = !currentActiveButton.value
   store.activeBar = 0
   store.activePie = 0
-};
+}
 const fundPage = () => {
-  store.wellStockDynamics();
-  store.regionalStructureFund();
-  store.wellStockDescription();
-  currentActiveButton.value = !currentActiveButton.value;
+  store.wellStockDynamics()
+  store.regionalStructureFund()
+  store.wellStockDescription()
+  currentActiveButton.value = !currentActiveButton.value
   store.activeBar = 0
   store.activePie = 0
-};
+}
 onMounted(() => {
-  totalPage();
-});
+  totalPage()
+})
 </script>
 <style scoped>
 .header,
@@ -183,25 +167,26 @@ onMounted(() => {
 }
 
 /* adaptive */
-@media(max-width:1760px){
-  .header-content, .main-content{
-    width: 80vw
+@media (max-width: 1760px) {
+  .header-content,
+  .main-content {
+    width: 80vw;
   }
 }
-@media(max-width:1500px){
-  .main-content{
-    width: 90vw
+@media (max-width: 1500px) {
+  .main-content {
+    width: 90vw;
   }
-  .header-content{
-    width: 85vw
+  .header-content {
+    width: 85vw;
   }
-  .section{
+  .section {
     width: 100%;
   }
 }
-@media(max-width:1000px){
-  .header-content{
-    flex-wrap: wrap
+@media (max-width: 1000px) {
+  .header-content {
+    flex-wrap: wrap;
   }
 }
 </style>
