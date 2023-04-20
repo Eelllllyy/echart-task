@@ -101,4 +101,22 @@ onMounted(() => {
 .big-number{
   font-size: 30px;
 }
+/* adaptive */
+@media(max-width:1500px){
+  .bar-description{
+  top: 10%;
+  right: 0%;
+  }
+}
+@media(max-width:900px){
+  .bar-description{
+  right: -20%;
+  }
+}
+@media (max-width: 500px){
+  .bar-description{
+    right: -69%;
+    top: -65%;
+}}
+
 </style>

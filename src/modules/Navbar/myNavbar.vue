@@ -199,4 +199,13 @@ li {
   color: #707070;
   font-weight: 300;
 }
+/* adaptive */
+@media(max-width:1500px){
+  .articles-nav{
+    flex-direction: column;
+  }
+  .main-nav{
+    background-color: rgba(255, 255, 255, 0);
+  }
+}
 </style>

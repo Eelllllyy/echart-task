@@ -181,4 +181,27 @@ onMounted(() => {
 .text-left {
   width: 257px;
 }
+
+/* adaptive */
+@media(max-width:1760px){
+  .header-content, .main-content{
+    width: 80vw
+  }
+}
+@media(max-width:1500px){
+  .main-content{
+    width: 90vw
+  }
+  .header-content{
+    width: 85vw
+  }
+  .section{
+    width: 100%;
+  }
+}
+@media(max-width:1000px){
+  .header-content{
+    flex-wrap: wrap
+  }
+}
 </style>

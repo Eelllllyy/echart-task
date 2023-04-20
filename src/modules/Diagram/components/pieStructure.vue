@@ -85,4 +85,11 @@ onMounted(() => {
 .big-number{
   font-size: 30px;
 }
+/* adaptive */
+@media(max-width:1500px){
+  .pie-description{
+  top: 10%;
+  right: 0%;
+  }
+}
 </style>

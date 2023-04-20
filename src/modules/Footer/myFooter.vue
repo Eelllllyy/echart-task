@@ -52,4 +52,11 @@
   font-size: small;
   color: #333333;
 }
+
+/* adaptive */
+@media(max-width:1500px){
+  .footer-section{
+    background-color: #ffffff;
+  }
+}
 </style>
