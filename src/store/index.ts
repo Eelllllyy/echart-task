@@ -3,12 +3,15 @@ import axios from "axios";
 export const useApiStore = defineStore("api", {
   state: () => ({
     newWells: [],
+    currentYear : null,
     structure: [],
     description: {
       left: "",
       right: "",
     },
     title: "",
+    activeBar: 0,
+    activePie: 0,
   }),
   actions: {
     async commissNewWells() {
@@ -18,6 +21,7 @@ export const useApiStore = defineStore("api", {
         );
         this.newWells = response.data;
         this.title = "Ввод новых скважин";
+        this.currentYear = response.data.at(-1)
       } catch (e) {
         console.error(e);
       }
@@ -50,6 +54,7 @@ export const useApiStore = defineStore("api", {
         );
         this.newWells = response.data;
         this.title = "Динамика фонда скважин";
+        this.currentYear = response.data.at(-1)
       } catch (e) {
         console.error(e);
       }

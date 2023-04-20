@@ -1,5 +1,11 @@
 <template>
-  <div class="regional-structure" ref="structureRef"></div>
+  <article class="article-pie">
+    <div class="regional-structure" ref="structureRef"></div>
+    <div class="pie-description">
+      <h1 class="big-number">{{ store.activePie }} %</h1>
+     <span>п.п.</span>
+    </div>
+  </article>
 </template>
 <script setup lang="ts">
 import { computed, ref, onMounted, watch } from "vue";
@@ -57,11 +63,26 @@ watch(chartOptions, () => {
 onMounted(() => {
   chart = echarts.init(structureRef.value);
   chart.setOption(chartOptions.value);
+  chart.on('click', function (params :any) {
+    console.log(params);
+    store.activePie = params.data.value
+});
 });
 </script>
 <style scoped>
 .regional-structure {
   width: 980px;
   height: 270px;
+}
+.article-pie{
+  position: relative;
+}
+.pie-description{
+  position: absolute;
+  top: 10%;
+  right: 47%;
+  }
+.big-number{
+  font-size: 30px;
 }
 </style>

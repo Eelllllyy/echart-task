@@ -1,8 +1,16 @@
 <template>
-  <div class="new-wells" ref="newWellstRef"></div>
+  <article class="article-bar">
+    <div class="new-wells" ref="newWellstRef"></div>
+    <div class="bar-description">
+      <p>Изменение <br> к отчетному году</p>
+      <h1 class="big-number">{{ changeData[1] }} %</h1>
+      <h1 class="big-number">{{ changeData[0] }}</h1>
+      <span>мдрд куб.</span>
+    </div>
+  </article>
 </template>
 <script setup lang="ts">
-import { computed, ref, onMounted, watch } from "vue";
+import { computed, ref, onMounted, watch, Ref } from "vue";
 import { useApiStore } from "@/store/index";
 import * as echarts from "echarts";
 const newWellstRef = ref();
@@ -35,15 +43,13 @@ const chartOptions = computed(() => {
               : "#F3AE4D";
           },
         },
-        data: store.newWells,
-        selectedMode: "multiple",
-        type: "bar",
-        select: {
-          label: {
+        label: {
             show: true,
             position: "top",
           },
-        },
+        data: store.newWells,
+        selectedMode: "single",
+        type: "bar",
       },
     ],
   };
@@ -52,17 +58,47 @@ const chartOptions = computed(() => {
 watch(chartOptions, () => {
   chart.setOption(chartOptions.value);
 });
+const changeData = computed <any> (() => {
+  let num :string = (store.currentYear?.value - store.activeBar).toFixed(1)
+  let percent :string = (store.activeBar * 100 / store.currentYear?.value).toFixed(1)
+  if(store.activeBar === store.currentYear?.value){
+    return [0, 0]
+  }
+  else if(store.activeBar){
+    return [num, percent]
+  }
+  return [0, 0]
+})
 onMounted(() => {
   chart = echarts.init(newWellstRef.value);
   chart.setOption(chartOptions.value);
   chart.resize({
     width: 730,
   });
+  chart.on('click', function (params :any) {
+    console.log(params);
+    store.activeBar = params.data.value
+});
 });
 </script>
 <style scoped>
 .new-wells {
   width: 980px;
   height: 270px;
+}
+.article-bar{
+  position: relative;
+}
+.bar-description{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  top: 0;
+  right: 30%;
+  height: 80%;
+}
+.big-number{
+  font-size: 30px;
 }
 </style>

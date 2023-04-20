@@ -66,12 +66,16 @@ const totalPage = () => {
   store.commissNewWellsDescription();
   store.regionalStructure();
   currentActiveButton.value = !currentActiveButton.value;
+  store.activeBar = 0
+  store.activePie = 0
 };
 const fundPage = () => {
   store.wellStockDynamics();
   store.regionalStructureFund();
   store.wellStockDescription();
   currentActiveButton.value = !currentActiveButton.value;
+  store.activeBar = 0
+  store.activePie = 0
 };
 onMounted(() => {
   totalPage();
