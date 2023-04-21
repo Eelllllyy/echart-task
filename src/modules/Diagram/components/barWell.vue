@@ -8,12 +8,12 @@
       </p>
       <h1 class="big-number">{{ changeData[1] }} %</h1>
       <h1 class="big-number">{{ changeData[0] }}</h1>
-      <span>мдрд куб.</span>
+      <span>млрд куб.</span>
     </div>
   </article>
 </template>
 <script setup lang="ts">
-import { computed, ref, onMounted, watch, Ref } from "vue"
+import { computed, ref, onMounted, watch } from "vue"
 import { useApiStore } from "@/store/index"
 import * as echarts from "echarts"
 const newWellstRef = ref()

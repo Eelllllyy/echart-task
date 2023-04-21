@@ -6,10 +6,10 @@
         <article class="one-article" v-for="(item, index) in items" :key="index">
           <h3>{{ item.title }}</h3>
           <div class="gray-line"></div>
-          <ul v-for="li in item.list">
+          <ul v-for="(li, index) in item.list" :key="index">
             <li>
               {{ li.title }}
-              <ul v-for="subLi in li.subTitle">
+              <ul v-for="(subLi, index) in li.subTitle" :key="index">
                 <li class="sub-li">{{ subLi?.title }}</li>
               </ul>
             </li>
@@ -51,7 +51,7 @@ const booty = {
       url: "#",
     },
     {
-      title: "На новых месторождениях(гринфилдах)",
+      title: "На новых месторождениях(«гринфилдах»)",
       url: "#",
     },
     {
